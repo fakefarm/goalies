@@ -1,2 +1,2 @@
 //= require "angular"
-//= require app
+//= require goals/app

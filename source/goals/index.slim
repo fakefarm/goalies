@@ -1,0 +1,21 @@
+.app ng-app='goals'
+  .goals ng-controller='goalController'
+    h1 Goals
+    form ng-submit='addGoal(goal)'
+      input type='text' placeholder='enter goal' ng-model='goal.name'
+
+      select ng-model='goal.circle'
+        option value='personal' personal
+        option value='relational' relational
+        option value='responsibility' responsibility
+
+      input type='submit' ng-model="goal" value='save goal'
+
+    all-goals
+    h2 all my goals
+    .goal ng-repeat='goal in goals'
+      span ng-hide='goals' loading...
+      span.name ng-bind='goal.name'
+      span &nbsp;
+      i.circle ng-bind='goal.circle'
+

@@ -1,9 +1,12 @@
 'use strict'
 
-@app = angular.module 'goalies', []
+@app = angular.module 'goals', []
 
 @app.factory 'goalModel', [ '$http', ($http) ->
-  urlBase = 'https://goalies-net.herokuapp.com/goals'
+
+  # urlBase = 'https://goalies-net.herokuapp.com/goals'
+  urlBase = 'http://localhost:3000/goals'
+
   goals = {}
   goals.getGoals = (goals)->
     $http({
