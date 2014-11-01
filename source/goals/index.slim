@@ -1,7 +1,7 @@
 .app ng-app='goals'
   .goals ng-controller='goalController'
     h1 Goals
-    form ng-submit='addGoal(goal)'
+    form ng-submit='addGoal(goal)' name='goalForm'
       input type='text' placeholder='enter goal' ng-model='goal.name'
 
       select ng-model='goal.circle'

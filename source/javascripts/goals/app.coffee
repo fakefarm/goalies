@@ -5,7 +5,6 @@
 @app.factory 'goalModel', [ '$http', ($http) ->
 
   urlBase = 'https://goalies-net.herokuapp.com/goals'
-  # urlBase = 'http://localhost:3000/goals'
 
   goals = {}
   goals.getGoals = (goals)->
@@ -18,33 +17,25 @@
   goals.postGoal = (goal) ->
     _goal = {'goal' : goal }
     $http({
-      headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8; application/json' }
       method: 'POST'
       url: urlBase
       data: goal
       }).success (data) ->
         return data
+
   return goals
 ]
 
-@app.controller 'goalController', [ '$scope', 'goalModel', '$http', ($scope, goalModel, $http) ->
+@app.controller 'goalController', [ '$scope', 'goalModel', ($scope, goalModel) ->
 
   getGoals = ->
     goalModel.getGoals().then (response) ->
       $scope.goals = response.data
 
-  # $scope.addGoal = (goal) ->
-  #   goalModel.postGoal(goal).then ->
-  #     debugger
-  #     $scope.goals.push(goal)
-  #   return
-
-  # $scope.addGoal = (goal) ->
-  #   $http
-  #     url: 'http://localhost:3000/goals'
-  #     method: 'POST'
-  #     data: { goal: goal }
+  $scope.addGoal = (goal) ->
+    goalModel.postGoal(goal).then ->
+      $scope.goals.push(goal)
+      $scope.goal = ''
 
   getGoals()
 ]
-
