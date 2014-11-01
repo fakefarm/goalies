@@ -1,3 +1,5 @@
 //= require "angular"
-//= require goals/app
+//= require "goalies"
+//= require_tree ./goals
+
 

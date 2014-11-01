@@ -1,41 +1,15 @@
 'use strict'
 
-@app = angular.module 'goals', []
+@app = angular.module 'goals', ['goalies']
 
-@app.factory 'goalModel', [ '$http', ($http) ->
+# @app.constant 'dev', { backend: "http://localhost:3000/goals" }
+# @app.constant 'prod', { backend: "https://goalies-net.herokuapp.com/goals" }
 
-  urlBase = 'https://goalies-net.herokuapp.com/goals'
+# @app.config [ 'dev', (dev)->
+#   @server = arguments[0].backend
+# ]
 
-  goals = {}
-  goals.getGoals = (goals)->
-    $http({
-        method: 'GET'
-        url: urlBase
-      }).success (response)->
-        response
+  # looks like a handy post when ready to talk auth
+  # http://ionicframework.com/blog/angularjs-authentication/
+  # $httpProvider.defaults.withCredentials = true;
 
-  goals.postGoal = (goal) ->
-    _goal = {'goal' : goal }
-    $http({
-      method: 'POST'
-      url: urlBase
-      data: goal
-      }).success (data) ->
-        return data
-
-  return goals
-]
-
-@app.controller 'goalController', [ '$scope', 'goalModel', ($scope, goalModel) ->
-
-  getGoals = ->
-    goalModel.getGoals().then (response) ->
-      $scope.goals = response.data
-
-  $scope.addGoal = (goal) ->
-    goalModel.postGoal(goal).then ->
-      $scope.goals.push(goal)
-      $scope.goal = ''
-
-  getGoals()
-]
