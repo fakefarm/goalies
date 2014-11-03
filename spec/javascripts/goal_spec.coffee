@@ -1,8 +1,12 @@
+# TODO - figure out how to manage these through jasmine.yml
+# TODO - move files into own spec
+
 #= require 'angular'
 #= require 'angular-mocks'
 #= require 'jquery'
 #= require 'goals/app'
 #= require 'goals/directives'
+#= require 'goals/models'
 #= require 'goalies'
 
 describe 'Goal', ->
@@ -14,10 +18,10 @@ describe 'Goal', ->
   beforeEach module('goals')
 
   beforeEach inject (_$injector_)->
-    $injector = _$injector_
-    $compile = $injector.get('$compile')
-    $rootScope = $injector.get('$rootScope')
-    $scope = $rootScope.$new()
+    $injector     = _$injector_
+    $compile      = $injector.get('$compile')
+    $rootScope    = $injector.get('$rootScope')
+    $scope        = $rootScope.$new()
 
   describe 'directives', ->
     beforeEach ->
@@ -38,7 +42,44 @@ describe 'Goal', ->
       it 'lists out all the goals'
 
   describe 'services', ->
+    $httpBackend = undefined
+    urlBase = 'https://goalies-net.herokuapp.com/goals'
+
+    beforeEach ->
+      $httpBackend  = $injector.get('$httpBackend')
+
     describe 'models', ->
       describe 'goalModel', ->
+        goalModel    = undefined
+
         describe '#getGoals', ->
+          beforeEach ->
+            goalModel     = $injector.get('goalModel')
+            # TODO - how can I use mocks instead?
+            $httpBackend.whenGET(urlBase).respond([
+              {
+                "id": 1,
+                "name": "learn to program",
+                "category": null,
+                "circle": "responsibility",
+                "created_at": "2014-10-30T20:22:31.827Z",
+                "updated_at": "2014-10-30T20:22:31.827Z"
+              },
+              {
+                "id": 2,
+                "name": "swim 500 laps",
+                "category": null,
+                "circle": "personal",
+                "created_at": "2014-10-30T20:23:10.057Z",
+                "updated_at": "2014-10-30T20:23:10.057Z"
+              }
+            ])
+
+          afterEach ->
+            $httpBackend.verifyNoOutstandingExpectation()
+            $httpBackend.verifyNoOutstandingRequest()
+
           it 'returns all the goals', ->
+            goalModel.getGoals().then (response)->
+              expect(response.data[0].name).toBe 'learn to program'
+            $httpBackend.flush()
