@@ -1,5 +1,6 @@
 #= require 'angular'
 #= require 'angular-mocks'
+#= require 'jquery'
 #= require 'goals/app'
 #= require 'goals/directives'
 #= require 'goalies'
@@ -18,21 +19,26 @@ describe 'Goal', ->
     $rootScope = $injector.get('$rootScope')
     $scope = $rootScope.$new()
 
-
   describe 'directives', ->
-    goals = undefined
     beforeEach ->
-      goals = angular.element(document).find('body').append("
+      $('body').append("
         <div id='wrapper'>
-        <goals></goals>
         </div>
         ")
 
     afterEach ->
-      angular.element(document).find('#wrapper').remove()
+      $('#wrapper').remove()
 
-    describe '<goals />', ->
-      it 'returns all of the goals', ->
-        element = $compile(goals)($scope)
-
+    describe '<goals>', ->
+      it 'contains the goal title', ->
+        element = $('#wrapper').html('<goals></goals>')
+        $compile(element)($scope)
         expect(element.html()).toContain 'All my goals'
+
+      it 'lists out all the goals'
+
+  describe 'services', ->
+    describe 'models', ->
+      describe 'goalModel', ->
+        describe '#getGoals', ->
+          it 'returns all the goals', ->
