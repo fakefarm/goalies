@@ -1,14 +1,30 @@
 #= require 'angular'
+#= require 'angular-mocks'
+#= require 'goals/app'
+#= require 'goals/directives'
+#= require 'goalies'
+
 describe 'Goal', ->
-  $injector = undefined
-  $compile  = undefined
+  $injector  = undefined
+  $compile   = undefined
   $rootScope = undefined
+  $scope     = undefined
+
+  beforeEach module('goals')
+
+  beforeEach inject (_$injector_)->
+    $injector = _$injector_
+    $compile = $injector.get('$compile')
+    $rootScope = $injector.get('$rootScope')
+    $scope = $rootScope.$new()
+
 
   describe 'directives', ->
+    goals = undefined
     beforeEach ->
-      angular.element(document).find('body').append("
+      goals = angular.element(document).find('body').append("
         <div id='wrapper'>
-          <goals></goals>
+        <goals></goals>
         </div>
         ")
 
@@ -17,4 +33,6 @@ describe 'Goal', ->
 
     describe '<goals />', ->
       it 'returns all of the goals', ->
-        expect(true).toBe true
+        element = $compile(goals)($scope)
+
+        expect(element.html()).toContain 'All my goals'
