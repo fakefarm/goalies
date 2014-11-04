@@ -5,7 +5,7 @@
   urlBase = 'https://goalies-net.herokuapp.com/goals'
 
   goals = {}
-  goals.getGoals = ->
+  goals.index = ->
     $http({
         method: 'GET'
         url: urlBase

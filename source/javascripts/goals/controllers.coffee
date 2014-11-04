@@ -3,7 +3,7 @@
 @app.controller 'goalController', [ '$scope', 'goalModel', ($scope, goalModel) ->
 
   getGoals = ->
-    goalModel.getGoals().then (response) ->
+    goalModel.index().then (response) ->
       $scope.goals = response.data
 
   $scope.addGoal = (goal) ->
