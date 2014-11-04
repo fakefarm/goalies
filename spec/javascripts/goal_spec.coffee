@@ -35,11 +35,19 @@ describe 'Goal', ->
 
     describe '<goals>', ->
       it 'contains the goal title', ->
-        element = $('#wrapper').html('<goals></goals>')
+        element = $('#wrapper').html('<all-goals></all-goals>')
         $compile(element)($scope)
         expect(element.html()).toContain 'All my goals'
 
       it 'lists out all the goals'
+
+    describe '<new-goal-form>', ->
+      it 'submit new goals', ->
+        element = $('#wrapper').html('<new-goal-form></new-goal-form>')
+        $compile(element)($scope)
+        expect(element.html()).toContain 'enter goal'
+        expect(element.html()).toContain 'myself'
+        expect(element.html()).toContain 'work'
 
   describe 'services', ->
     $httpBackend = undefined

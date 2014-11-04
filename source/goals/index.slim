@@ -1,14 +1,4 @@
 .app ng-app='goals'
   .goals ng-controller='goalController'
-    h1 Goals
-    form ng-submit='addGoal(goal)' name='goalForm'
-      input type='text' placeholder='enter goal' ng-model='goal.name'
-
-      select ng-model='goal.circle'
-        option value='personal' personal
-        option value='relational' relational
-        option value='responsibility' responsibility
-
-      input type='submit' ng-model="goal" value='save goal'
-
+    new-goal-form
     all-goals
