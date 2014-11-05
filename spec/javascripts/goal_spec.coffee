@@ -2,6 +2,7 @@
 # TODO - move files into own spec
 
 #= require 'angular'
+#= require "angular-xeditable"
 #= require 'angular-mocks'
 #= require 'jquery'
 #= require 'goals/app'
@@ -46,8 +47,8 @@ describe 'Goal', ->
         element = $('#wrapper').html('<new-goal-form></new-goal-form>')
         $compile(element)($scope)
         expect(element.html()).toContain 'enter goal'
-        expect(element.html()).toContain 'myself'
-        expect(element.html()).toContain 'work'
+        expect(element.html()).toContain 'me'
+        expect(element.html()).toContain 'duties'
 
   describe 'services', ->
     $httpBackend = undefined

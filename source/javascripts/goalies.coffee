@@ -1,2 +1,2 @@
-@app = angular.module 'goalies', []
+@app = angular.module 'goalies', ['xeditable']
 

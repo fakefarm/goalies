@@ -1,3 +1,22 @@
 @import 'bourbon';
 @import 'neat';
 @import 'base/base';
+@import 'angular-xeditable';
+
+// Temporary!
+
+.editable-radiolist label { // part of xeditbale for radio buttons
+  display: block;
+}
+
+span.name.ng-binding {
+    min-width: 320px;
+    display: inline-block;
+    width: 330px;
+}
+
+i.circle.ng-binding {
+    min-width: 116px;
+    display: inline-block;
+}
+
