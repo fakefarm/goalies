@@ -15,14 +15,14 @@
     _goal = {'goal' : goal }
     $http(
       method: 'PUT'
-      url: 'https://goalies-net.herokuapp.com/goals' + goal.id
+      url: 'https://goalies-net.herokuapp.com/goals/' + goal.id
       data: _goal
     )
 
   $scope.delete = (goal)->
     $http(
       method: 'DELETE'
-      url: 'https://goalies-net.herokuapp.com/goals' + goal.id
+      url: 'https://goalies-net.herokuapp.com/goals/' + goal.id
     )
     goal.delete = true;
 
