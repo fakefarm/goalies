@@ -20,15 +20,15 @@
       <input type= 'radio'
              name='circle'
              ng-model='goal.circle'
-             value='me'>me
+             value='personal'>personal goal
       <input type= 'radio'
              name='circle'
              ng-model='goal.circle'
-             value='relationshiops'>relationshiops
+             value='relational'>relational goal
       <input type= 'radio'
              name='circle'
              ng-model='goal.circle'
-             value='duties'>duties
+             value='responsibility'>responsibility goal
       <br>
       <input type='submit' ng-model='goal' value='new goal'>
     </form>
