@@ -3,12 +3,15 @@
 @app.directive 'allGoals', ->
   template: "
     <h2>All my goals</h2>
-    <div ng-repeat='goal in goals'>
-      <span class='name' ng-bind='goal.name'></span>
+    <div ng-repeat='goal in goals' class='goal-item' ng-hide='goal.delete'>
+      <span class='name' editable-text='goal.name' ng-bind='goal.name' onaftersave='updateGoal(goal)'></span>
       <span>&nbsp;</span>
       <i class='circle' ng-bind='goal.circle'></i>
+      <span class='controls'>
+        <a ng-click='delete(goal)'>delete</a>
+      </span>
     </div>
-    "
+  "
 
 @app.directive 'newGoalForm', ->
   template: "
@@ -17,15 +20,15 @@
       <input type= 'radio'
              name='circle'
              ng-model='goal.circle'
-             value='myself'>myself
+             value='me'>me
       <input type= 'radio'
              name='circle'
              ng-model='goal.circle'
-             value='others'>others
+             value='relationshiops'>relationshiops
       <input type= 'radio'
              name='circle'
              ng-model='goal.circle'
-             value='work'>work
+             value='duties'>duties
       <br>
       <input type='submit' ng-model='goal' value='new goal'>
     </form>
