@@ -1,0 +1,1 @@
+(function(){this.app=angular.module("goals"),this.app.factory("goalModel",["$http",function(t){var n,o;return o="https://goalies-net.herokuapp.com/goals",n={},n.index=function(){return t({method:"GET",url:o}).success(function(t){return t})},n.postGoal=function(n){var u;return u={goal:n},t({method:"POST",url:o,data:n}).success(function(t){return t})},n}])}).call(this);

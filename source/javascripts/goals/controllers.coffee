@@ -15,7 +15,7 @@
     _goal = {'goal' : goal }
     $http(
       method: 'PUT'
-      url: 'http://localhost:3000/goals/' + goal.id
+      url: 'https://goalies-net.herokuapp.com/goals' + goal.id
       data: _goal
     )
 
@@ -23,7 +23,7 @@
     # debugger
     $http(
       method: 'DELETE'
-      url: 'http://localhost:3000/goals/' + goal.id
+      url: 'https://goalies-net.herokuapp.com/goals' + goal.id
     )
     goal.delete = true;
 
