@@ -20,7 +20,6 @@
     )
 
   $scope.delete = (goal)->
-    # debugger
     $http(
       method: 'DELETE'
       url: 'https://goalies-net.herokuapp.com/goals' + goal.id
