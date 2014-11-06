@@ -1,8 +1,8 @@
 @app = angular.module 'goals'
 
-@app.factory 'goalModel', [ '$http', ($http) ->
+@app.factory 'goalModel', [ '$http', 'myConfig', ($http, myConfig) ->
 
-  urlBase = 'https://goalies-net.herokuapp.com/goals'
+  urlBase = myConfig.backend
 
   goals = {}
   goals.index = ->
@@ -20,6 +20,20 @@
       data: goal
       }).success (data) ->
         return data
+
+  goals.update = (goal)->
+    _goal = {'goal' : goal }
+    $http(
+      method: 'PUT'
+      url: urlBase + goal.id
+      data: _goal
+    )
+
+  goals.destroy = (goal)->
+    $http(
+      method: 'DELETE'
+      url: urlBase + goal.id
+    )
 
   return goals
 ]

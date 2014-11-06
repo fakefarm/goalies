@@ -1,30 +1,22 @@
 @app = angular.module 'goals'
 
-@app.controller 'goalController', [ '$scope', 'goalModel', '$http', ($scope, goalModel, $http) ->
+@app.controller 'goalController', [ '$scope', 'goalModel', ($scope, goalModel) ->
 
   getGoals = ->
     goalModel.index().then (response) ->
       $scope.goals = response.data
 
-  $scope.addGoal = (goal) ->
+  $scope.new = (goal) ->
     goalModel.postGoal(goal).then ->
       $scope.goals.push(goal)
       $scope.goal = ''
 
-  $scope.updateGoal = (goal)->
-    _goal = {'goal' : goal }
-    $http(
-      method: 'PUT'
-      url: 'https://goalies-net.herokuapp.com/goals/' + goal.id
-      data: _goal
-    )
+  $scope.update = (goal)->
+    goalModel.update(goal)
 
-  $scope.delete = (goal)->
-    $http(
-      method: 'DELETE'
-      url: 'https://goalies-net.herokuapp.com/goals/' + goal.id
-    )
-    goal.delete = true;
+  $scope.destroy = (goal)->
+    goalModel.destroy(goal).then ->
+      goal.delete = true;
 
   getGoals()
 ]
