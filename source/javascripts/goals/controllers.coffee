@@ -38,7 +38,7 @@
           task
 
   $scope.new = (task) ->
-    taskModel.postTask(task).then ->
+    taskModel.postTask(task).then (data)->
       task.snooze = new Date()
       $scope.tasks.push(task)
       $scope.task = ''
