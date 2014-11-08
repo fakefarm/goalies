@@ -1,0 +1,1 @@
+(function(){this.app=angular.module("goalies",["xeditable","angularMoment"])}).call(this);

@@ -1,0 +1,1 @@
+(function(){"use strict";this.app=angular.module("goals",["goalies"]),this.app.constant("myConfig",{urlBase:"https://goalies-net.herokuapp.com/"})}).call(this);
