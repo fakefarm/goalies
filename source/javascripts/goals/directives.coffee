@@ -15,13 +15,25 @@
 
 @app.directive 'allTasks', ->
   template: "
-    <h2>All my tasks</h2>
-    <div ng-repeat='task in tasks' class='task-item' ng-hide='task.delete'>
+    <h2>To Do</h2>
+    <div ng-repeat='task in tasks' class='task-item' ng-hide='task.completed'>
+      <span class='task-alignment'>o</span>
       <span class='name' editable-text='task.name' ng-bind='task.name' onaftersave='update(task)'></span>
-      <span>&nbsp;</span>
-      <i class='circle' ng-bind='task.circle'></i>
       <span class='controls'>
-        <a ng-click='destroy(task)'>delete</a>
+        <a ng-click='snooze(task)'>snooze</a>
+        <a ng-click='complete(task)'>complete</a>
+        <a ng-click=''>align</a>
+      </span>
+    </div>
+  "
+
+@app.directive 'completedTasks', ->
+  template: "
+    <h2>Completed</h2>
+    <div ng-repeat='task in completedTasks' class='task-item' ng-show='task.completed'>
+      <span class='name' editable-text='task.name' ng-bind='task.name' onaftersave='update(task)'></span>
+      <span class='controls'>
+        <a ng-click=''>align</a>
       </span>
     </div>
   "
@@ -46,6 +58,22 @@
              name='circle'
              ng-model='goal.circle'
              value='responsibility'>responsibility goal
+      <br>
+      <input type= 'radio'
+             required='goalform.quarter'
+             name='quarter'
+             ng-model='goal.quarter'
+             value='now'>Now
+      <input type= 'radio'
+             required='goalform.quarter'
+             name='quarter'
+             ng-model='goal.quarter'
+             value='next'>Next quarter
+      <input type= 'radio'
+             required='goalform.quarter'
+             name='quarter'
+             ng-model='goal.quarter'
+             value='later'>Bank for later
       <br>
       <input type='submit' ng-model='goal' value='new goal'>
     </form>

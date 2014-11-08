@@ -25,14 +25,32 @@
 
   getTasks = ->
     taskModel.index().then (response) ->
-      $scope.tasks = response.data
+      tasks = response.data
+      $scope.tasks = _.filter tasks, (task) ->
+        if task.completed == false
+          task
+
+  completedTasks = ->
+    taskModel.index().then (response) ->
+      tasks = response.data
+      $scope.completedTasks = _.filter tasks, (task) ->
+        if task.completed == true
+          task
 
   $scope.new = (task) ->
     taskModel.postTask(task).then ->
+      task.snooze = new Date()
       $scope.tasks.push(task)
       $scope.task = ''
 
   $scope.update = (task)->
+    taskModel.update(task)
+
+  $scope.snooze = (task)->
+    taskModel.update(task)
+
+  $scope.complete = (task)->
+    task.completed = true
     taskModel.update(task)
 
   $scope.destroy = (task)->
@@ -40,4 +58,5 @@
       task.delete = true;
 
   getTasks()
+  completedTasks()
 ]
