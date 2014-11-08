@@ -13,6 +13,20 @@
     </div>
   "
 
+@app.directive 'allTasks', ->
+  template: "
+    <h2>All my tasks</h2>
+    <div ng-repeat='task in tasks' class='task-item' ng-hide='task.delete'>
+      <span class='name' editable-text='task.name' ng-bind='task.name' onaftersave='update(task)'></span>
+      <span>&nbsp;</span>
+      <i class='circle' ng-bind='task.circle'></i>
+      <span class='controls'>
+        <a ng-click='destroy(task)'>delete</a>
+      </span>
+    </div>
+  "
+
+
 @app.directive 'newGoalForm', ->
   template: "
     <form novalidate ng-submit='new(goal)' name='goalform'>
@@ -34,5 +48,15 @@
              value='responsibility'>responsibility goal
       <br>
       <input type='submit' ng-model='goal' value='new goal'>
+    </form>
+  "
+
+
+@app.directive 'newTaskForm', ->
+  template: "
+    <form novalidate ng-submit='new(task)' name='taskform'>
+      <input type='text' placeholder='enter task' ng-model='task.name'>
+      <br>
+      <input type='submit' ng-model='task' value='new task'>
     </form>
   "

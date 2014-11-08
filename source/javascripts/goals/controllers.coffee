@@ -20,3 +20,24 @@
 
   getGoals()
 ]
+
+@app.controller 'taskController', [ '$scope', 'taskModel', ($scope, taskModel) ->
+
+  getTasks = ->
+    taskModel.index().then (response) ->
+      $scope.tasks = response.data
+
+  $scope.new = (task) ->
+    taskModel.postTask(task).then ->
+      $scope.tasks.push(task)
+      $scope.task = ''
+
+  $scope.update = (task)->
+    taskModel.update(task)
+
+  $scope.destroy = (task)->
+    taskModel.destroy(task).then ->
+      task.delete = true;
+
+  getTasks()
+]
