@@ -22,7 +22,6 @@
       <span class='controls'>
         <a ng-click='snooze(task)'>snooze</a>
         <a ng-click='complete(task)'>complete</a>
-        <a ng-click=''>align</a>
       </span>
     </div>
   "
@@ -33,7 +32,13 @@
     <div ng-repeat='task in completedTasks' class='task-item' ng-show='task.completed'>
       <span class='name' editable-text='task.name' ng-bind='task.name' onaftersave='update(task)'></span>
       <span class='controls'>
-        <a ng-click=''>align</a>
+        <a href=''
+           onaftersave='update(task)'
+           buttons='no'
+           editable-select='task.goal_id'
+           e-ng-options='goal.id as goal.name for goal in goals'
+           ng-bind='align(task)'>
+        </a>
       </span>
     </div>
   "
@@ -47,17 +52,17 @@
              required='goalform.circle'
              name='circle'
              ng-model='goal.circle'
-             value='personal'>personal goal
+             value='personal'>personal
       <input type= 'radio'
              required='goalform.circle'
              name='circle'
              ng-model='goal.circle'
-             value='relational'>relational goal
+             value='relational'>relational
       <input type= 'radio'
              required='goalform.circle'
              name='circle'
              ng-model='goal.circle'
-             value='responsibility'>responsibility goal
+             value='responsibility'>responsibility
       <br>
       <input type= 'radio'
              required='goalform.quarter'
@@ -68,12 +73,7 @@
              required='goalform.quarter'
              name='quarter'
              ng-model='goal.quarter'
-             value='next'>Next quarter
-      <input type= 'radio'
-             required='goalform.quarter'
-             name='quarter'
-             ng-model='goal.quarter'
-             value='later'>Bank for later
+             value='later'>Later
       <br>
       <input type='submit' ng-model='goal' value='new goal'>
     </form>

@@ -21,7 +21,21 @@
   getGoals()
 ]
 
-@app.controller 'taskController', [ '$scope', 'taskModel', ($scope, taskModel) ->
+@app.controller 'taskController', [ '$scope', 'taskModel', 'goalModel', ($scope, taskModel, goalModel) ->
+
+  goalModel.index().then (response) ->
+    $scope.goals = response.data
+
+    goalNames = {}
+    _.each $scope.goals, (gg) ->
+      goalNames[gg.id] = gg.name
+
+    $scope.align = (task) ->
+      if task.goal_id
+        goalNames[task.goal_id]
+      else
+        'what goal?'
+
 
   getTasks = ->
     taskModel.index().then (response) ->
