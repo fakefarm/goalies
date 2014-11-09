@@ -3,8 +3,8 @@
 @app = angular.module 'goals', ['goalies']
 
 @app.constant 'myConfig', {
-  # 'urlBase': 'http://localhost:3000/'
-  'urlBase': 'https://goalies-net.herokuapp.com/'
+  'urlBase': 'http://localhost:3000/'
+  # 'urlBase': 'https://goalies-net.herokuapp.com/'
 }
 
 # looks like a handy post when ready to talk auth
