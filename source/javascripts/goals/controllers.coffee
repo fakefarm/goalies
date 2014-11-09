@@ -41,7 +41,7 @@
     taskModel.index().then (response) ->
       tasks = response.data
       $scope.tasks = _.filter tasks, (task) ->
-        if task.completed == false
+        if task.completed == false && (moment(task.snooze) < moment())
           task
 
   completedTasks = ->
@@ -51,16 +51,28 @@
         if task.completed == true
           task
 
+  snoozedTasks = ->
+    taskModel.index().then (response) ->
+      tasks = response.data
+      $scope.snoozedTasks = _.filter tasks, (task) ->
+        if task.completed == false && (moment(task.snooze) > moment())
+          task
+
   $scope.new = (task) ->
+    task.snooze = moment()
     $scope.tasks.push(task)
     $scope.task = ''
-    taskModel.postTask(task).then (data)->
-      task.snooze = new Date()
+    taskModel.postTask(task)
 
   $scope.update = (task)->
     taskModel.update(task)
 
   $scope.snooze = (task)->
+    task.snooze = moment(task.snooze).add(3, 'days')
+    taskModel.update(task)
+
+  $scope.return = (task)->
+    task.snooze = moment()
     taskModel.update(task)
 
   $scope.complete = (task)->
@@ -73,4 +85,5 @@
 
   getTasks()
   completedTasks()
+  snoozedTasks()
 ]

@@ -26,6 +26,20 @@
     </div>
   "
 
+@app.directive 'snoozedTasks', ->
+  template: "
+    <h2>Snoozed</h2>
+    <div ng-repeat='task in snoozedTasks' class='task-item' ng-hide='task.completed'>
+      <span class='task-alignment'>o</span>
+      <span class='name' editable-text='task.name' ng-bind='task.name' onaftersave='update(task)'></span>
+      <span class='controls'>
+        <a ng-click='return(task)'>return</a>
+        <a ng-click='complete(task)'>complete</a>
+      </span>
+    </div>
+  "
+
+
 @app.directive 'completedTasks', ->
   template: "
     <h2>Completed</h2>
