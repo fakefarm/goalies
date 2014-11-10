@@ -36,12 +36,19 @@
         if task.completed == false && (moment(task.snooze) > moment())
           task
 
-  removeTaskFromAllTasks = (task) ->
+  _removeTaskFromAllTasks = (task) ->
     index = ''
     _.each $scope.tasks, (t) ->
       if t.id == task.id
         index = $scope.tasks.indexOf(task)
     $scope.tasks.splice(index, 1)
+
+  _removeTaskFromSnoozedTasks = (task) ->
+    index = ''
+    _.each $scope.snoozedTasks, (t) ->
+      if t.id == task.id
+        index = $scope.snoozedTasks.indexOf(task)
+    $scope.snoozedTasks.splice(index, 1)
 
   $scope.new = (task) ->
     task.snooze = moment()
@@ -56,11 +63,13 @@
     task.snooze = moment(task.snooze).add(3, 'days')
     taskModel.update(task)
     $scope.snoozedTasks.push(task)
-    removeTaskFromAllTasks(task)
+    _removeTaskFromAllTasks(task)
 
   $scope.return = (task)->
     task.snooze = moment()
     taskModel.update(task)
+    $scope.tasks.push(task)
+    _removeTaskFromSnoozedTasks(task)
 
   $scope.complete = (task)->
     task.completed = true
