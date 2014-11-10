@@ -36,26 +36,6 @@
         if task.completed == false && (moment(task.snooze) > moment())
           task
 
-  _removeTaskFromAllTasks = (task) ->
-    index = ''
-    _.each $scope.tasks, (t) ->
-      if t.id == task.id
-        index = $scope.tasks.indexOf(task)
-    $scope.tasks.splice(index, 1)
-
-  _removeTaskFromSnoozedTasks = (task) ->
-    index = ''
-    _.each $scope.snoozedTasks, (t) ->
-      if t.id == task.id
-        index = $scope.snoozedTasks.indexOf(task)
-    $scope.snoozedTasks.splice(index, 1)
-
-  _removeTaskFromCompletedTasks = (task) ->
-    index = ''
-    _.each $scope.completedTasks, (t) ->
-      if t.id == task.id
-        index = $scope.completedTasks.indexOf(task)
-    $scope.completedTasks.splice(index, 1)
 
   $scope.new = (task) ->
     task.snooze = moment()
@@ -66,29 +46,39 @@
   $scope.update = (task)->
     taskModel.update(task)
 
+  moveFrom = (list, item) ->
+    index = ''
+    _.each list, (t) ->
+      if t.id == item.id
+        index = list.indexOf(item)
+    list.splice(index, 1)
+
+  moveTo = (list, item) ->
+    list.push(item)
+
   $scope.snooze = (task)->
     task.snooze = moment(task.snooze).add(3, 'days')
     taskModel.update(task)
-    $scope.snoozedTasks.push(task)
-    _removeTaskFromAllTasks(task)
+    moveFrom($scope.tasks, task)
+    moveTo($scope.snoozedTasks, task)
 
   $scope.return = (task)->
     task.snooze = moment()
     taskModel.update(task)
-    $scope.tasks.push(task)
-    _removeTaskFromSnoozedTasks(task)
+    moveFrom($scope.snoozedTasks, task)
+    moveTo($scope.tasks, task)
 
   $scope.undo = (task)->
     task.completed = false
     taskModel.update(task)
-    $scope.tasks.push(task)
-    _removeTaskFromCompletedTasks(task)
+    moveFrom($scope.completedTasks, task)
+    moveTo($scope.tasks, task)
 
   $scope.complete = (task)->
     task.completed = true
     taskModel.update(task)
-    $scope.completedTasks.push(task)
-    _removeTaskFromAllTasks(task)
+    moveFrom($scope.tasks, task)
+    moveTo($scope.completedTasks, task)
 
   $scope.destroy = (task)->
     taskModel.destroy(task).then ->
