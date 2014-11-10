@@ -50,6 +50,13 @@
         index = $scope.snoozedTasks.indexOf(task)
     $scope.snoozedTasks.splice(index, 1)
 
+  _removeTaskFromCompletedTasks = (task) ->
+    index = ''
+    _.each $scope.completedTasks, (t) ->
+      if t.id == task.id
+        index = $scope.completedTasks.indexOf(task)
+    $scope.completedTasks.splice(index, 1)
+
   $scope.new = (task) ->
     task.snooze = moment()
     $scope.tasks.push(task)
@@ -71,9 +78,17 @@
     $scope.tasks.push(task)
     _removeTaskFromSnoozedTasks(task)
 
+  $scope.undo = (task)->
+    task.completed = false
+    taskModel.update(task)
+    $scope.tasks.push(task)
+    _removeTaskFromCompletedTasks(task)
+
   $scope.complete = (task)->
     task.completed = true
     taskModel.update(task)
+    $scope.completedTasks.push(task)
+    _removeTaskFromAllTasks(task)
 
   $scope.destroy = (task)->
     taskModel.destroy(task).then ->

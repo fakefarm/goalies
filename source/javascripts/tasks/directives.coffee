@@ -30,7 +30,6 @@
       <span class='name' editable-text='task.name' ng-bind='task.name' onaftersave='update(task)'></span>
       <span class='controls'>
         <a ng-click='return(task)'>return</a>
-        <a ng-click='complete(task)'>complete</a>
       </span>
     </div>
   "
@@ -48,6 +47,7 @@
            e-ng-options='goal.id as goal.name for goal in goals'
            ng-bind='align(task)'>
         </a>
+        <a ng-click='undo(task)'>undo</a>
       </span>
     </div>
   "
