@@ -5,3 +5,4 @@
 //= require "moment"
 //= require "goalies"
 //= require_tree ./goals
+//= require_tree ./tasks
