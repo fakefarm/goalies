@@ -14,8 +14,16 @@
     templateUrl: 'templates/tasks/index.html'
     controller: 'taskController'
     }).
+    when( '/tasks/new', {
+    templateUrl: 'templates/tasks/new.html'
+    controller: 'taskController'
+    }).
+    when( '/tasks/completed', {
+    templateUrl: 'templates/tasks/completed.html'
+    controller: 'taskController'
+    }).
     when( '/goals', {
-    templateUrl: 'templates/goals/all_goals.html'
+    templateUrl: 'templates/goals/goals.html'
     controller: 'goalController'
     }).
     otherwise( '/')

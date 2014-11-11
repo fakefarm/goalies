@@ -1,0 +1,13 @@
+.l-content
+  .main
+    div ng-include="'templates/tasks/tasks.html'"
+  .sidebar-open ng-show="openSidebar"
+    a.flag ng-controller='taskController' href='' ng-click='toggleSideBar()' x
+    div ng-include="'templates/tasks/new.html'"
+    .sub-tasks
+      .snoozed
+        div ng-include="'templates/tasks/snoozed.html'"
+      .complete
+        div ng-include="'templates/tasks/completed.html'"
+  .sidebar-closed ng-hide="openSidebar"
+    a.flag ng-controller='taskController' href='' ng-click='toggleSideBar()' x

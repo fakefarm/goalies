@@ -1,0 +1,17 @@
+h2 add a goal from a middleman partial!!
+form name="goalform" ng-submit="new(goal)" novalidate=""
+  input ng-model="goal.name" placeholder=("enter goal") type="text" /
+  = succeed "personal" do
+    input name="circle" ng-model="goal.circle" required="goalform.circle" type="radio" value="personal" /
+  = succeed "relational" do
+    input name="circle" ng-model="goal.circle" required="goalform.circle" type="radio" value="relational" /
+  = succeed "responsibility" do
+    input name="circle" ng-model="goal.circle" required="goalform.circle" type="radio" value="responsibility" /
+  br/
+  = succeed "Now" do
+    input name="quarter" ng-model="goal.quarter" required="goalform.quarter" type="radio" value="now" /
+  = succeed "Later" do
+    input name="quarter" ng-model="goal.quarter" required="goalform.quarter" type="radio" value="later" /
+  br/
+  input ng-model="goal" type="submit" value=("new goal") /
+hr
