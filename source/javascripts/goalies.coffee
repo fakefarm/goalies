@@ -5,7 +5,8 @@
   # 'urlBase': 'https://goalies-net.herokuapp.com/'
 }
 
-@app.config [ '$routeProvider', '$locationProvider', ($routeProvider) ->
+@app.config [ '$routeProvider', ($routeProvider) ->
+
   $routeProvider.
     when( '/', {
     templateUrl: 'templates/index.html'
@@ -14,19 +15,7 @@
     templateUrl: 'templates/tasks/index.html'
     controller: 'taskController'
     }).
-    when( '/tasks/new', {
-    templateUrl: 'templates/tasks/new.html'
-    controller: 'taskController'
-    }).
-    when( '/tasks/completed', {
-    templateUrl: 'templates/tasks/completed.html'
-    controller: 'taskController'
-    }).
-    when( '/goals', {
-    templateUrl: 'templates/goals/goals.html'
-    controller: 'goalController'
-    }).
-    otherwise( '/')
+    otherwise( '/tasks')
 ]
 
 
