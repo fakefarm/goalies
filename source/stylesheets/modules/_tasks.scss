@@ -1,0 +1,165 @@
+// move to???
+
+.sidebar-open {
+  @include span-columns(12);
+  @include media($medium-screen) {
+    border: 1px dashed red;
+    border-left: 1px solid $light-gray;
+    height: 1000px;
+    padding-left: 2em;
+    @include span-columns(5);
+  }
+  @include media($large-screen) {
+    border: 1px dashed blue;
+    @include span-columns(4);
+  }
+
+  .flag {
+    @include span-columns(12);
+    @include media($medium-screen) {
+      cursor: pointer;
+      width: 20px;
+      height: 40px;
+      border: 1px solid $light-gray;
+      color: $light-gray;
+      padding: 0.2em 0 0 0.3em;
+      margin-left: -2.06em;
+      margin-top: 1em;
+    }
+    @include media($large-screen) {
+    }
+  }
+}
+
+.sidebar-closed {
+  @include span-columns(12);
+  @include media($medium-screen) {
+    border-left: 1px solid $light-gray;
+    height: 1000px;
+    padding-left: 2em;
+    @include span-columns(1);
+    @include shift(4);
+  }
+  @include media($large-screen) {
+    @include shift(2);
+    @include span-columns(1);
+  }
+
+  .flag {
+    @include span-columns(12);
+    @include media($medium-screen) {
+      cursor: pointer;
+      width: 20px;
+      height: 40px;
+      border: 1px solid $light-gray;
+      color: $light-gray;
+      padding: 0.2em 0 0 0.3em;
+      margin-left: -3.25em;
+      margin-top: 1em;
+    }
+    @include media($large-screen) {
+    }
+  }
+}
+
+
+.main {
+  @include span-columns(12);
+  @include media($medium-screen) {
+    border: 1px dashed blue;
+    @include span-columns(6.7);
+  }
+  @include media($large-screen) {
+    border: 1px dashed red;
+    @include span-columns(7.7);
+  }
+}
+
+// Task
+
+.task {
+  @include row();
+  .content {
+    @include span-columns(12);
+    @include media($medium-screen) {
+      @include span-columns(9);
+    }
+    @include media($large-screen) {
+      @include span-columns(9);
+    }
+  }
+  .controls {
+    @include span-columns(12);
+    @include media($medium-screen) {
+      @include span-columns(3);
+    }
+    @include media($large-screen) {
+      @include span-columns(3);
+    }
+  }
+  .name {
+    font-size: 2em;
+    color: black;
+    border: none;
+    display: inline-block;
+    &.long {
+      font-size: 1.65em;
+    }
+    @include media($medium-screen) {
+      display: inline-block;
+      font-size: 2.5em;
+      font-weight: 100;
+    }
+    @include media($large-screen) {
+      font-size: 3em;
+      color: red;
+    }
+  }
+  .goal {
+    display: inline-block;
+    border-radius: 90px;
+    width: 10px;
+    height: 10px;
+    &.assigned   { background: $light-green; }
+    &.unassigned { background: $light-red;   }
+  }
+  .complete, .snooze {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  .complete {
+    background: green;
+  }
+  .snooze {
+    background: red;
+  }
+}
+
+
+// Task form
+
+.new-task-form {
+  @include row;
+  .task {
+    @include media($medium-screen) {
+      @include span-columns(7);
+    }
+    @include media($large-screen) {
+      @include span-columns(6);
+    }
+
+  }
+  .submit {
+    @include media($medium-screen) {
+      @include span-columns(5);
+    }
+    @include media($large-screen) {
+      @include span-columns(6);
+    }
+  }
+}
+
+
+

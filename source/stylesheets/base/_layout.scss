@@ -1,3 +1,7 @@
 .l-container {
-  @include outer-container();
+  border: 1px dashed red;
+}
+
+.l-content {
+  @include row;
 }

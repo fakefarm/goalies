@@ -1,0 +1,8 @@
+#nav {
+  border-bottom: 1px solid $light-gray;
+  li {
+    @include media($medium-screen) {
+      display: inline-block;
+    }
+  }
+}
