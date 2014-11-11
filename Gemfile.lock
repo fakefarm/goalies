@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:damrbaby/middleman-angular-templates.git
+  revision: 793f89cf3ccb22f1853662b571f621a11a1e1177
+  specs:
+    middleman-angular-templates (0.0.1)
+      middleman-core (>= 3.1.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -176,6 +183,7 @@ DEPENDENCIES
   bourbon
   coffee-script
   middleman (~> 3.3.6)
+  middleman-angular-templates!
   middleman-blog (~> 3.5.3)
   middleman-deploy (~> 0.3.0)
   middleman-jasmine

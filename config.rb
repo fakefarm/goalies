@@ -74,6 +74,7 @@ end
 activate :jasmine
 activate :directory_indexes
 activate :livereload
+activate :angular_templates
 
 set :markdown_engine, :kramdown
 set :css_dir,         'stylesheets'

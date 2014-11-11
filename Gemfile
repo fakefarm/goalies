@@ -7,6 +7,8 @@ gem "middleman-blog", "~> 3.5.3"
 gem 'middleman-jasmine'
 gem 'middleman-deploy', '~> 0.3.0'
 gem "middleman-livereload", "~> 3.1.0"
+gem 'middleman-angular-templates', git: 'git@github.com:damrbaby/middleman-angular-templates.git'
+
 
 gem 'bourbon'
 gem 'neat'
