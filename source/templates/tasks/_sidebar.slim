@@ -1,0 +1,9 @@
+a.flag href='' ng-click='toggleSideBar()' x
+div ng-include="'templates/tasks/new.html'"
+.sub-tasks
+  .snoozed
+    h2 snoozed
+    div ng-include="'templates/tasks/snoozed.html'"
+  .complete
+    h2 completed
+    div ng-include="'templates/tasks/completed.html'"
