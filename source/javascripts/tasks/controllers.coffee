@@ -2,8 +2,6 @@
 
 @app.controller 'taskController', [ '$scope', 'taskModel', 'goalModel', ($scope, taskModel, goalModel) ->
 
-  $scope.openSidebar = true
-
   goalModel.index().then (response) ->
     $scope.goals = response.data
 
@@ -24,9 +22,6 @@
         if task.completed == false && (moment(task.snooze) < moment())
           task
 
-  toggleSideBar = ->
-    console.log 'you clicked'
-    # $scope.openSidebar != $scope.openSidebar
 
   completedTasks = ->
     taskModel.index().then (response) ->
@@ -46,7 +41,7 @@
   $scope.new = (task) ->
     task.snooze = moment()
     $scope.tasks.push(task)
-    $scope.task = ''
+    $scope.new.task = {}
     taskModel.postTask(task)
 
   $scope.update = (task)->
@@ -93,4 +88,15 @@
   getTasks()
   completedTasks()
   snoozedTasks()
+]
+
+
+
+@app.controller 'TaskSidebarController', [ '$scope', ($scope) ->
+  $scope.openSidebar = false
+
+  toggleSideBar = ->
+    console.log 'you clicked'
+    alert 'working?'
+    $scope.openSidebar != $scope.openSidebar
 ]
