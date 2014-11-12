@@ -37,7 +37,6 @@
         if task.completed == false && (moment(task.snooze) > moment())
           task
 
-
   $scope.new = (task) ->
     task.snooze = moment()
     $scope.tasks.push(task)
@@ -90,13 +89,22 @@
   snoozedTasks()
 ]
 
-
-
 @app.controller 'TaskSidebarController', [ '$scope', ($scope) ->
-  $scope.openSidebar = false
+  $scope.openSidebar = true
+  $scope.toggle = false
+  $scope.completed   = { status: false }
+  $scope.snooze      = { status: true }
 
-  toggleSideBar = ->
-    console.log 'you clicked'
-    alert 'working?'
-    $scope.openSidebar != $scope.openSidebar
+  $scope.showCompleted = ->
+    $scope.completed.status = true
+    $scope.snooze.status    = false
+
+  $scope.showSnoozed = ->
+    $scope.snooze.status = true
+    $scope.completed.status = false
+
+  $scope.toggleDrawer = ->
+      $scope.toggle = !$scope.toggle
+
+
 ]

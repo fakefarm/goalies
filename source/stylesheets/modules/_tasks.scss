@@ -1,10 +1,10 @@
 // move to???
 
-.sidebar-open {
+.sidebar-drawer {
   @include span-columns(12);
   @include media($medium-screen) {
     border-left: 1px solid $light-gray;
-    min-height: 860px;
+    min-height: 760px;
     padding-left: 2em;
     @include span-columns(5);
   }
@@ -23,12 +23,19 @@
       padding: 0.2em 0 0 0.3em;
       margin-left: -3.25em;
       margin-top: 1em;
+      z-index: 100;
     }
     @include media($large-screen) {
     }
   }
 }
 
+.sidebarClosed {
+  display: none;
+   a.flag & {
+    border: 10px solid red;
+   }
+}
 
 .main {
   @include span-columns(12);
@@ -56,19 +63,22 @@
   .controls {
     @include span-columns(12);
     @include media($medium-screen) {
+      margin-top: 1.1em;
       @include span-columns(3);
     }
     @include media($large-screen) {
-      @include span-columns(3);
+      margin-top: 1.5em;
+      @include shift(1.5);
+      @include span-columns(1.5);
     }
   }
   .name {
     font-size: 2em;
-    color: black;
+    color: $medium-gray;
     border: none;
     display: inline-block;
     &.long {
-      font-size: 1.65em;
+      font-size: 2em;
     }
     @include media($medium-screen) {
       display: inline-block;
@@ -77,11 +87,19 @@
     }
     @include media($large-screen) {
       font-size: 3em;
-      color: red;
     }
   }
+  .goal-box {
+    display: inline-block;
+    padding: 13px;
+    position: relative;
+  }
+
   .goal {
     display: inline-block;
+    position: absolute;
+    top: 8px;
+    left: 8px;
     border-radius: 90px;
     width: 10px;
     height: 10px;
@@ -90,38 +108,51 @@
   }
   .complete, .snooze {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+    border-radius: 3px;
   }
   .complete {
-    background: green;
+    background: $light-green;
+    margin-right: 15px
   }
   .snooze {
-    background: red;
+    background: $light-red;
   }
 }
 
+// snoozed
 
+.snoozed {
+  .name {
+    margin-right: 1em;
+  }
+}
 // Task form
 
 .new-task-form {
+  input[type="text"] {
+    border: none;
+    border-bottom: 1px solid $light-gray;
+    box-shadow: none;
+  }
   @include row;
   .task {
     @include media($medium-screen) {
-      @include span-columns(7);
+      @include span-columns(9);
     }
     @include media($large-screen) {
-      @include span-columns(6);
+      @include span-columns(10);
     }
 
   }
   .submit {
     @include media($medium-screen) {
-      @include span-columns(5);
+      @include span-columns(2);
     }
     @include media($large-screen) {
-      @include span-columns(6);
+      @include span-columns(2);
     }
   }
 }

@@ -1,0 +1,27 @@
+.sidebar {
+}
+.sub-tasks {
+  border-bottom: 1px solid $light-gray;
+  margin-bottom: 1em;
+  position: relative;
+
+  li {
+    position: relative;
+    top: 1px;
+    background: white;
+    display: inline-block;
+    border-right: 1px solid $light-gray;
+    border-left:  1px solid $light-gray;
+    border-top:   1px solid $light-gray;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin-left: 1em;
+    padding: 0 1em;
+  }
+
+  .back {
+    background: $light-gray;
+    a { color: white; }
+  }
+
+}

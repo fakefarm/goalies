@@ -1,9 +1,11 @@
-a.flag href='' ng-click='toggleSideBar()' x
 div ng-include="'templates/tasks/new.html'"
 .sub-tasks
-  .snoozed
-    h2 snoozed
-    div ng-include="'templates/tasks/snoozed.html'"
-  .complete
-    h2 completed
-    div ng-include="'templates/tasks/completed.html'"
+  ul
+    li ng-class="{ back: completed.status }"
+      a href='' ng-click='showSnoozed()' snoozed
+    li ng-class="{ back: !completed.status }"
+      a href='' ng-click='showCompleted()' completed
+.snoozed ng-show='snooze.status'
+  div ng-include="'templates/tasks/snoozed.html'"
+.complete ng-show='completed.status'
+  div ng-include="'templates/tasks/completed.html'"

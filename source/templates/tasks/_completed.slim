@@ -1,5 +1,5 @@
 .task-item ng-repeat=("task in completedTasks") ng-show="task.completed"
-  span.name editable-text="task.name" ng-bind="task.name" onaftersave="update(task)"
+  span.name ng-bind="task.name"
   span.controls
     a buttons="no" e-ng-options=("goal.id as goal.name for goal in goals") editable-select="task.goal_id" href="" ng-bind="align(task)" onaftersave="update(task)"
     a ng-click="undo(task)"  undo
