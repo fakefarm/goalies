@@ -1,0 +1,1 @@
+(function(){this.app=angular.module("tasks")}).call(this);
