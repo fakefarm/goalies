@@ -1,5 +1,5 @@
-.task-item ng-hide="task.completed" ng-repeat=("task in snoozedTasks")
-  span.task-alignment o
-  span.name editable-text="task.name" ng-bind="task.name" onaftersave="update(task)"
-  span.controls
-    a ng-click="return(task)"  return
+.snoozed
+  .task-item ng-hide="task.completed" ng-repeat=("task in snoozedTasks")
+    span.name ng-bind="task.name" ng-click="return(task)"
+    span.controls
+      i ng-bind='task.snooze | date'
