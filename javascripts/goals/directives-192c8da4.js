@@ -1,0 +1,1 @@
+(function(){this.app=angular.module("goals")}).call(this);

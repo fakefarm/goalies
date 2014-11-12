@@ -1,1 +1,0 @@
-(function(){this.app=angular.module("goalies",["xeditable","angularMoment","goals","tasks"]),this.app.constant("myConfig",{urlBase:"https://goalies-net.herokuapp.com/"})}).call(this);
