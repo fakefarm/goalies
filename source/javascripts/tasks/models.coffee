@@ -19,6 +19,7 @@
       url: urlBase
       data: task
       }).success (data) ->
+        task.id =  data.id
         return data
 
   tasks.update = (task)->
