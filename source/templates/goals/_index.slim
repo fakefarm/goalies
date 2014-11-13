@@ -1,0 +1,7 @@
+.l-content
+  .main
+    div ng-include="'templates/goals/goals.html'"
+  .sidebar-drawer ng-controller='TaskSidebarController' ng-click='toggleSidebar()'
+    a.flag ng-click='toggleDrawer()' x
+    .sidebar ng-class='{ sidebarClosed: toggle }'
+      div ng-include="'templates/goals/new_goal_form.html'"

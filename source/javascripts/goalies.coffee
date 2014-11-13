@@ -15,6 +15,10 @@
     templateUrl: 'templates/tasks/index.html'
     controller: 'taskController'
     }).
+    when( '/goals', {
+    templateUrl: 'templates/goals/index.html'
+    controller: 'goalController'
+    }).
     otherwise( '/tasks')
 ]
 

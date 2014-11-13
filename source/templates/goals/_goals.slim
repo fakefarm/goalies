@@ -1,9 +1,5 @@
-h2 All my goals!
 div ng-repeat='goal in goals' class='goal-item' ng-hide='goal.delete'
   span class='name' editable-text='goal.name' ng-bind='goal.name' onaftersave='update(goal)'
   i class='circle' ng-bind='goal.circle'
   span class='controls'
     a ng-click='destroy(goal)' delete
-
-= render_partial 'templates/goals/new_goal_form'
-

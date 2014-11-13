@@ -105,6 +105,4 @@
 
   $scope.toggleDrawer = ->
       $scope.toggle = !$scope.toggle
-
-
 ]
