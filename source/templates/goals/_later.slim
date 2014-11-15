@@ -1,0 +1,5 @@
+.snoozed
+  .task-item ng-hide="task.completed" ng-repeat=("goal in goals")
+    span.name ng-bind="goal.name" ng-click="return(task)"
+    span.controls
+      i ng-bind='task.snooze | date'

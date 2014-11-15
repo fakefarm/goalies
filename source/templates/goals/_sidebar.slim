@@ -1,0 +1,10 @@
+.sub-tasks
+  ul
+    li ng-class="{ back: completed.status }"
+      a href='' ng-click='showSnoozed()' new goal
+    li ng-class="{ back: !completed.status }"
+      a href='' ng-click='showCompleted()' future goals
+.snoozed ng-show='snooze.status'
+  div ng-include="'templates/goals/new_goal_form.html'"
+.complete ng-show='completed.status'
+  div ng-include="'templates/goals/later.html'"
