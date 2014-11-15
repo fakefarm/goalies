@@ -7,6 +7,7 @@
       $scope.goals = response.data
 
   $scope.new = (goal) ->
+    goal.id = goal.id
     goalModel.postGoal(goal).then ->
       $scope.goals.push(goal)
       $scope.goal = ''
