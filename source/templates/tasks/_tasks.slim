@@ -5,5 +5,5 @@
         span.goal ng-class="{ assigned: task.goal_id != null, unassigned: task.goal_id == null }"
       span.name buttons="no" ng-class="{ long: task.name.length > 15 }"editable-text="task.name" ng-bind="task.name" onaftersave="update(task)"
     span.controls
-      a.complete ng-click="complete(task)"
-      a.snooze   ng-click="snooze(task)"
+      a.fa.fa-circle-thin ng-click="complete(task)"
+      a.fa.fa-bell-o   ng-click="snooze(task)"
