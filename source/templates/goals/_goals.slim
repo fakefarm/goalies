@@ -1,5 +1,6 @@
-div ng-repeat='goal in goals' class='goal-item' ng-hide='goal.delete'
-  span class='name' editable-text='goal.name' ng-bind='goal.name' onaftersave='update(goal)'
-  i class='circle' ng-bind='goal.circle'
-  span class='controls'
-    a ng-click='destroy(goal)' delete
+.tasks
+  .task ng-repeat=("goal in goals")
+    span.content
+      span.name buttons="no" ng-class="{ long: goal.name.length > 15 }" editable-text="goal.name" ng-bind="goal.name" onaftersave="update(goal)"
+    span.controls
+      a ng-click='destroy(goal)' delete
