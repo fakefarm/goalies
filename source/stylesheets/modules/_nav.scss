@@ -1,8 +1,22 @@
 #nav {
   border-bottom: 1px solid $light-gray;
-  li {
+  ul {
+      text-align: center;
     @include media($medium-screen) {
-      display: inline-block;
+      text-align: right;
+    }
+  }
+  li {
+    display: inline-block;
+    margin-left: 2em;
+    font-size: 2em;
+    &:nth-child(1) {
+      margin-left: 0;
+    }
+    @include media($medium-screen) {
+      // display: inline-block;
+      margin-left: 1em;
+      font-size: 1.5em;
     }
   }
 }

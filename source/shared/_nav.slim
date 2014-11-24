@@ -1,5 +1,8 @@
 #nav
   ul
-    li= link_to 'home', '/'
-    li= link_to 'goals', '#/goals'
-    li= link_to 'tasks', '#/tasks'
+    li= link_to '/' do
+      span.fa.fa-home
+    li= link_to '#/goals' do
+      span.fa.fa-rocket
+    li= link_to '#/tasks' do
+      span.fa.fa-check-circle
