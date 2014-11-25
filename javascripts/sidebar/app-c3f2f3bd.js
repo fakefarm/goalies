@@ -1,0 +1,1 @@
+(function(){"use strict";this.app=angular.module("sidebar",["goalies"])}).call(this);
