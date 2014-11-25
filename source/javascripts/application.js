@@ -7,3 +7,4 @@
 //= require "goalies"
 //= require_tree ./goals
 //= require_tree ./tasks
+//= require_tree ./sidebar

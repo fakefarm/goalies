@@ -1,8 +1,8 @@
-@app = angular.module 'goalies', ['xeditable', 'angularMoment', 'goals', 'tasks', 'ngRoute']
+@app = angular.module 'goalies', ['xeditable', 'angularMoment', 'goals', 'tasks', 'sidebar', 'ngRoute']
 
 @app.constant 'myConfig', {
-  # 'urlBase': 'http://localhost:3000/'
-  'urlBase': 'https://goalies-net.herokuapp.com/'
+  'urlBase': 'http://localhost:3000/'
+  # 'urlBase': 'https://goalies-net.herokuapp.com/'
 }
 
 @app.config [ '$routeProvider', ($routeProvider) ->

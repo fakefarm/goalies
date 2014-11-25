@@ -1,8 +1,9 @@
 = render_partial 'shared/nav'
 .l-content
-  .main
+  .l-main
     div ng-include="'templates/tasks/tasks.html'"
-  .sidebar-drawer ng-controller='TaskSidebarController' ng-click='toggleSidebar()'
+
+  .sidebar-drawer ng-controller='SidebarController' ng-click='toggleSidebar()'
     a.flag ng-click='toggleDrawer()' x
     .sidebar ng-class='{ sidebarClosed: toggle }'
       div ng-include="'templates/tasks/sidebar.html'"

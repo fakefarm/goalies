@@ -1,2 +1,12 @@
 .l-container {}
 .l-content { @include row; }
+
+.l-main {
+  @include span-columns(12);
+  @include media($medium-screen) {
+    @include span-columns(7);
+  }
+  @include media($large-screen) {
+    @include span-columns(8);
+  }
+}
