@@ -15,5 +15,6 @@
     $scope.completed.status = false
 
   $scope.toggleDrawer = ->
-      $scope.toggle = !$scope.toggle
+    console.log 'clicked!'
+    $scope.toggle = !$scope.toggle
 ]

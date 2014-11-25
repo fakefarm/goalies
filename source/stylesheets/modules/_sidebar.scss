@@ -24,39 +24,55 @@
 
 }
 
-.sidebar-drawer {
+.flag {
   @include span-columns(12);
+  @include media($medium-screen) {
+    cursor: pointer;
+    width: 20px;
+    height: 40px;
+    border: 1px solid $light-gray;
+    color: $light-gray;
+    padding: 0.2em 0 0 0.3em;
+    margin-left: -3.25em;
+    margin-top: -1em;
+    z-index: 100;
+  }
+  @include media($large-screen) {
+  }
+}
+
+
+.sidebarClosed {
+  @include media($medium-screen) {
+    position: absolute;
+    right: -91px;
+    top: 45px;
+    height: 1000px;
+    border-left: 1px solid $light-gray;
+    width: 100px;
+  }
+}
+
+.flag-closed {
+  @include media($medium-screen) {
+    cursor: pointer;
+    width: 20px;
+    height: 40px;
+    border: 1px solid $light-gray;
+    color: $light-gray;
+    padding: 0.2em 0 0 0.3em;
+    z-index: 100;
+    position: absolute;
+    left: -20px;
+    top: 15px;
+  }
+}
+
+.sidebarOpen {
   @include media($medium-screen) {
     border-left: 1px solid $light-gray;
     min-height: 760px;
     padding-left: 2em;
-    @include span-columns(5);
+    padding-top: 2em;
   }
-  @include media($large-screen) {
-    @include span-columns(4);
-  }
-
-  .flag {
-    @include span-columns(12);
-    @include media($medium-screen) {
-      cursor: pointer;
-      width: 20px;
-      height: 40px;
-      border: 1px solid $light-gray;
-      color: $light-gray;
-      padding: 0.2em 0 0 0.3em;
-      margin-left: -3.25em;
-      margin-top: 1em;
-      z-index: 100;
-    }
-    @include media($large-screen) {
-    }
-  }
-}
-
-.sidebarClosed {
-  display: none;
-   a.flag & {
-    border: 10px solid red;
-   }
 }

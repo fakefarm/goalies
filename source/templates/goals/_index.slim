@@ -2,8 +2,10 @@
 .l-content
   .l-main
     div ng-include="'templates/goals/goals.html'"
-
-  .sidebar-drawer ng-controller='SidebarController' ng-click='toggleSidebar()'
-  /   a.flag ng-click='toggleDrawer()' x
-  /   .sidebar ng-class='{ sidebarClosed: toggle }'
-  /     div ng-include="'templates/goals/sidebar.html'"
+  .sidebar ng-controller='SidebarController'
+    .l-sidebar
+      .sidebarOpen ng-if='!toggle'
+        a.flag ng-click='toggleDrawer()' x
+        .content ng-include="'templates/goals/sidebar.html'"
+    .sidebarClosed ng-if='toggle'
+      a.flag-closed ng-click='toggleDrawer()' x
