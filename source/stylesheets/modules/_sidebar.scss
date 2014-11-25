@@ -21,55 +21,44 @@
     background: $light-gray;
     a { color: white; }
   }
+}
 
+.sidebar {
+  @include media($medium-screen) {
+    position: relative;
+  }
 }
 
 .flag {
-  @include span-columns(12);
   @include media($medium-screen) {
+    &:after { content: 'x' }
+    position: absolute;
+    left: -20px;
+    top: 15px;
     cursor: pointer;
     width: 20px;
     height: 40px;
     border: 1px solid $light-gray;
     color: $light-gray;
     padding: 0.2em 0 0 0.3em;
-    margin-left: -3.25em;
-    margin-top: -1em;
     z-index: 100;
   }
-  @include media($large-screen) {
-  }
 }
-
 
 .sidebarClosed {
   @include media($medium-screen) {
     position: absolute;
-    right: -91px;
-    top: 45px;
+    right: -99px;
+    top: 0;
     height: 1000px;
     border-left: 1px solid $light-gray;
     width: 100px;
   }
 }
 
-.flag-closed {
-  @include media($medium-screen) {
-    cursor: pointer;
-    width: 20px;
-    height: 40px;
-    border: 1px solid $light-gray;
-    color: $light-gray;
-    padding: 0.2em 0 0 0.3em;
-    z-index: 100;
-    position: absolute;
-    left: -20px;
-    top: 15px;
-  }
-}
-
 .sidebarOpen {
   @include media($medium-screen) {
+    position: relative;
     border-left: 1px solid $light-gray;
     min-height: 760px;
     padding-left: 2em;

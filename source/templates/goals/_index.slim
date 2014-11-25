@@ -5,7 +5,7 @@
   .sidebar ng-controller='SidebarController'
     .l-sidebar
       .sidebarOpen ng-if='!toggle'
-        a.flag ng-click='toggleDrawer()' x
+        a.flag ng-click='toggleDrawer()'
         .content ng-include="'templates/goals/sidebar.html'"
     .sidebarClosed ng-if='toggle'
-      a.flag-closed ng-click='toggleDrawer()' x
+      a.flag ng-click='toggleDrawer()'
