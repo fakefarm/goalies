@@ -1,11 +1,18 @@
 @app = angular.module 'goals'
 
-@app.controller 'goalController', [ '$scope', 'goalModel', '$routeParams', ($scope, goalModel, $routeParams) ->
+@app.controller 'goalController', [ '$scope', 'goalModel', '$routeParams', 'taskModel', ($scope, goalModel, $routeParams, taskModel) ->
 
   getGoals = ->
     goalModel.index().then (response) ->
       $scope.goals = response.data
       goalShow() # how do I fix this?
+
+  getTasks = ->
+  taskModel.index().then (response) ->
+    tasks = response.data
+    $scope.tasks = _.filter tasks, (task) ->
+      if task.goal_id == parseInt( $routeParams.id, 10 )
+        task
 
   goalShow = ->
     # what's the right way to show goals on a page?
@@ -18,6 +25,10 @@
       $scope.goals.push(goal)
       $scope.goal = ''
 
+  $scope.complete = (goal)->
+    goal.completed = true;
+    goalModel.update(goal)
+
   $scope.update = (goal)->
     goalModel.update(goal)
 
@@ -26,6 +37,7 @@
       goal.delete = true;
 
   getGoals()
+  getTasks()
   return
 ]
 

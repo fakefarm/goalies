@@ -6,3 +6,20 @@
         h2.name buttons="no" ng-class="{ long: goal.name.length > 15 }" editable-text="goal.name" ng-bind="goal.name" onaftersave="update(goal)"
       span.controls
         a ng-click='destroy(goal)' delete
+        a ng-click='complete(goal)' complete
+      span completed:
+      span ng-bind='goal.completed'
+    .l-sub
+      p tasks
+      .list ng-repeat=("task in tasks")
+        h3 ng-bind='task.name'
+      p logs
+      h1 this is where logs will go.
+  .sidebar ng-controller='SidebarController'
+    .l-sidebar
+      .sidebarOpen ng-if='!toggle'
+        a.flag ng-click='toggleDrawer()'
+        .content ng-include="'templates/tasks/new.html'"
+        h1 list of incomplete tasks part of this goal goes here.
+      .sidebarClosed ng-if='toggle'
+        a.flag ng-click='toggleDrawer()'

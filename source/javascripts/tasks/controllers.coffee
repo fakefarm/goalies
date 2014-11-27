@@ -27,7 +27,7 @@
     taskModel.index().then (response) ->
       tasks = response.data
       $scope.completedTasks = _.filter tasks, (task) ->
-        if task.completed == true
+        if task.completed == true && task.goal_id == null
           task
 
   snoozedTasks = ->
