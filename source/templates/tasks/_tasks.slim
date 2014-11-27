@@ -1,5 +1,5 @@
 .tasks
-  .task ng-hide="task.completed" ng-repeat=("task in tasks")
+  .list ng-hide="task.completed" ng-repeat=("task in tasks")
     span.content
       span.goal-box
         span.goal ng-class="{ assigned: task.goal_id != null, unassigned: task.goal_id == null }"
