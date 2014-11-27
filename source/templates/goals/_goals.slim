@@ -1,6 +1,3 @@
-.tasks
-  .task ng-repeat=("goal in goals")
-    span.content
-      span.name buttons="no" ng-class="{ long: goal.name.length > 15 }" editable-text="goal.name" ng-bind="goal.name" onaftersave="update(goal)"
-    span.controls
-      a ng-click='destroy(goal)' delete
+.list ng-repeat=("goal in goals")
+  span.content
+    a.name ng-class="{ long: goal.name.length > 15 }" ng-bind="goal.name" ng-href="/#/goals/{{goal.id}}"

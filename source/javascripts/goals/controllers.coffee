@@ -5,8 +5,12 @@
   getGoals = ->
     goalModel.index().then (response) ->
       $scope.goals = response.data
+      goalShow() # how do I fix this?
 
-
+  goalShow = ->
+    # what's the right way to show goals on a page?
+    $scope.goal = _.find $scope.goals, (goal) ->
+      goal.id == parseInt( $routeParams.id, 10 )
 
   $scope.new = (goal) ->
     goal.id = goal.id
@@ -22,4 +26,7 @@
       goal.delete = true;
 
   getGoals()
+  return
 ]
+
+

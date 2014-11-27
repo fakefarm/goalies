@@ -1,2 +1,8 @@
-h1 Hello, I'm a goal
-h2 ng-bind='goals'
+= render_partial 'shared/nav'
+.l-content
+  .l-main
+    .list
+      span.content
+        h2.name buttons="no" ng-class="{ long: goal.name.length > 15 }" editable-text="goal.name" ng-bind="goal.name" onaftersave="update(goal)"
+      span.controls
+        a ng-click='destroy(goal)' delete
