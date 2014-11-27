@@ -1,8 +1,8 @@
 @app = angular.module 'goalies', ['xeditable', 'angularMoment', 'goals', 'tasks', 'sidebar', 'ngRoute']
 
 @app.constant 'myConfig', {
-  # 'urlBase': 'http://localhost:3000/'
-  'urlBase': 'https://goalies-net.herokuapp.com/'
+  'urlBase': 'http://localhost:3000/'
+  # 'urlBase': 'https://goalies-net.herokuapp.com/'
 }
 
 @app.config [ '$routeProvider', ($routeProvider) ->
@@ -17,6 +17,10 @@
     }).
     when( '/goals', {
     templateUrl: 'templates/goals/index.html'
+    controller: 'goalController'
+    }).
+    when( '/goals/:id', {
+    templateUrl: 'templates/goals/show.html'
     controller: 'goalController'
     }).
     otherwise( '/tasks')

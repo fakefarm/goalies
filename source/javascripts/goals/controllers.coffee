@@ -1,10 +1,12 @@
 @app = angular.module 'goals'
 
-@app.controller 'goalController', [ '$scope', 'goalModel', ($scope, goalModel) ->
+@app.controller 'goalController', [ '$scope', 'goalModel', '$routeParams', ($scope, goalModel, $routeParams) ->
 
   getGoals = ->
     goalModel.index().then (response) ->
       $scope.goals = response.data
+
+
 
   $scope.new = (goal) ->
     goal.id = goal.id
